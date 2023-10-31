@@ -2,6 +2,7 @@ import com.microsoft.playwright.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.testng.annotations.*;
+import pageRepository.GoogleSearch;
 
 public class GoogleTest {
 
@@ -23,9 +24,11 @@ public class GoogleTest {
 
 	@Test
 	public void google() {
+		GoogleSearch googleSearch = new GoogleSearch(page);
+
 		page.navigate("https://www.google.co.in/");
 		log.info("Navigated to Google search page");
-		page.locator(".gLFyf").fill("Mountains");
+		googleSearch.searchBox();
 		log.info("Entered Mountains in search box");
 		page.locator(".gLFyf").press("Enter");
 		log.info("Clicking on enter to search");
