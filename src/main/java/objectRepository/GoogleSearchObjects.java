@@ -1,5 +1,5 @@
 package objectRepository;
 
 public class GoogleSearchObjects {
-	public static String searchBox = ".gLFyf";
+	public static final String searchBox = ".gLFyf";
 }

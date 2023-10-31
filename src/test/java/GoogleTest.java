@@ -26,11 +26,11 @@ public class GoogleTest {
 	public void google() {
 		GoogleSearch googleSearch = new GoogleSearch(page);
 
-		page.navigate("https://www.google.co.in/");
+		googleSearch.navigation();
 		log.info("Navigated to Google search page");
 		googleSearch.searchBox();
 		log.info("Entered Mountains in search box");
-		page.locator(".gLFyf").press("Enter");
+		googleSearch.searchBoxEnter();
 		log.info("Clicking on enter to search");
 	}
 }
