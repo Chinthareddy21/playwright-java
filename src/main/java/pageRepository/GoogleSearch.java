@@ -20,6 +20,10 @@ public class GoogleSearch {
 		page.locator(GoogleSearchObjects.searchBox).fill(credentials.searchText);
 	}
 
+	public void searchBox2(){
+		page.locator(GoogleSearchObjects.searchBox).fill(credentials.searchText2);
+	}
+
 	public void searchBoxEnter(){
 		page.locator(GoogleSearchObjects.searchBox).press(credentials.enterKey);
 	}

@@ -2,7 +2,7 @@ import com.microsoft.playwright.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.testng.annotations.*;
-import pageRepository.GoogleSearch;
+import pageRepository.*;
 
 public class GoogleTest {
 
@@ -11,7 +11,8 @@ public class GoogleTest {
 	@BeforeSuite
 	public void setUp() {
 		log.info("Setting up Browser");
-		Browser browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+		Browser browser =
+				Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 		page = browser.newPage();
 		log.info("Browser started");
 	}
@@ -22,7 +23,7 @@ public class GoogleTest {
 		log.info("Closing Browser");
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void google() {
 		GoogleSearch googleSearch = new GoogleSearch(page);
 
@@ -33,4 +34,18 @@ public class GoogleTest {
 		googleSearch.searchBoxEnter();
 		log.info("Clicking on enter to search");
 	}
+
+	@Test(priority = 2)
+	public void google2() {
+		GoogleSearch googleSearch = new GoogleSearch(page);
+
+		page.goBack();
+		log.info("Navigated to Google search page");
+		googleSearch.searchBox();
+		log.info("Entered Mountains in search box");
+		googleSearch.searchBoxEnter();
+		log.info("Clicking on enter to search");
+	}
+
+
 }
